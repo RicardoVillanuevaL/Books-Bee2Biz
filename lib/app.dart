@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 //DESING
 import 'package:flutter_bees2biz/src/constants/colors.dart';
 import 'package:flutter_bees2biz/src/constants/images.dart';
+//ROUTES
+import 'package:flutter_bees2biz/src/Books/views/BooksPage.dart';
 
 class MyApp extends StatefulWidget {
   @override
@@ -56,7 +58,8 @@ class _ScreenSplashState extends State<ScreenSplash> {
   void loadNavigator() {
     Future.delayed(Duration(seconds: 2), () {
       print('SE VA PARA EL CATALOGO DE LIBROS');
-      //Navigator.of(context).push(MaterialPageRoute(builder: (context)=> BooksPage();));
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => BooksPage()));
     });
   }
 }
