@@ -1,27 +1,13 @@
 import 'dart:convert';
 
-BookModel bookModelFromJson(String str) => BookModel.fromJson(json.decode(str));
+List<BookModel> bookModelFromJson(String str) =>
+    List<BookModel>.from(json.decode(str).map((x) => BookModel.fromJson(x)));
 
-String bookModelToJson(BookModel data) => json.encode(data.toJson());
+String bookModelToJson(List<BookModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class BookModel {
   BookModel({
-    this.books,
-  });
-
-  List<Book> books;
-
-  factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
-        books: List<Book>.from(json["books"].map((x) => Book.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "books": List<dynamic>.from(books.map((x) => x.toJson())),
-      };
-}
-
-class Book {
-  Book({
     this.title,
     this.subtitle,
     this.isbn13,
@@ -37,7 +23,7 @@ class Book {
   String image;
   String url;
 
-  factory Book.fromJson(Map<String, dynamic> json) => Book(
+  factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
         title: json["title"],
         subtitle: json["subtitle"],
         isbn13: json["isbn13"],
